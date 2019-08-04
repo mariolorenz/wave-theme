@@ -4,16 +4,65 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.1.1] -  Unreleased
+## [1.3.0] -  Unreleased
 
 ### Added
+- Added missing for- and id-Attributes to many lines [PR-48](https://github.com/OXID-eSales/wave-theme/pull/48) 
+in: 
+  - user_billing.tpl
+  - user_shipping.tpl
+  - newsletter.tpl
+  - user_account.tpl
+  - user_noaccount.tpl
+- Added missing help-block-Elements to salutations in user_billing.tpl and user_shipping.tpl [PR-48](https://github.com/OXID-eSales/wave-theme/pull/48)
+- Added !default to all variables in variables.scss so it would be possible to overwrite them [PR-62](https://github.com/OXID-eSales/wave-theme/pull/62)
 
+### Changed
+- Replaced the low-tech arrows in the pagination buttons with Font Awesome Icons [PR-51](https://github.com/OXID-eSales/wave-theme/pull/51)
+- Changed block ``user_account_newsletter`` in form/fieldset/user_account.tpl from inner form-group to outer form-group
+- Don't output the legal footer if oxstdfooter isn't there [PR-58](https://github.com/OXID-eSales/wave-theme/pull/58)
+
+### Deprecated
+
+### Removed
+- Remove not used scripts.min.js [PR-42](https://github.com/OXID-eSales/wave-theme/pull/42)
+- Remove outdated econda keys from en translations [PR-52](https://github.com/OXID-eSales/wave-theme/pull/52)
+
+### Fixed
+- Do not show badge circle if its empty
+- Fixed for- and id-Attribute of oxuser__oxsal in user_billing.tpl [PR-48](https://github.com/OXID-eSales/wave-theme/pull/48)
+- Fixed the bootstrap offset classes in newsletter.tpl [PR-48](https://github.com/OXID-eSales/wave-theme/pull/48)
+- Use sStartPageListDisplayType setting in Top seller start page block [PR-57](https://github.com/OXID-eSales/wave-theme/pull/57)
+- Fix removal of items from basket on pressing Enter [#0007008](https://bugs.oxid-esales.com/view.php?id=7008) [PR-47](https://github.com/OXID-eSales/wave-theme/pull/47)
+- Fix compare list remove link on details page [#0006979](https://bugs.oxid-esales.com/view.php?id=6979) [PR-59](https://github.com/OXID-eSales/wave-theme/pull/59)
+- Fix first error field message disappearing right after validation [PR-45](https://github.com/OXID-eSales/wave-theme/pull/45)
+- Fix More button and children in menu [PR-50](https://github.com/OXID-eSales/wave-theme/pull/50)
+- Prevent main menu flyouts from protruding out of the viewport [PR-54](https://github.com/OXID-eSales/wave-theme/pull/54)
+
+### Security
+
+## [1.2.0] -  2019-07-16
+
+### Added
+- New blocks:
+  - `form/fieldset/user_shipping.tpl`  
+    - form_user_shipping_address_actions
+    - form_user_shipping_address_edit_action
+    - form_user_shipping_address_delete_action
+  - `widget/footer/services.tpl`
+    - footer_services_cart
+- Add stoken parameter to remove voucher link
+- Add js sourcemaps [PR-40](https://github.com/OXID-eSales/wave-theme/pull/40)
+    
 ### Fixed
 - Fix "Brands" slider size when no brands available [PR-32](https://github.com/OXID-eSales/wave-theme/pull/32)
 - Fix "sBackgroundPosVertical" config variable constraints [PR-33](https://github.com/OXID-eSales/wave-theme/pull/33)
 - Fix box height in My account [PR-35](https://github.com/OXID-eSales/wave-theme/pull/35)
 - Fix selectlists select functionality in product details [PR-37](https://github.com/OXID-eSales/wave-theme/pull/37)
 - Do not use deprecated getSession of Base class
+- Fix HTML syntax error in oxaddress__oxfname req [PR-41](https://github.com/OXID-eSales/wave-theme/pull/41)
+- Fix wrong translations and icon in 404 and offline pages [PR-38](https://github.com/OXID-eSales/wave-theme/pull/38)
+- Fix 404 page animation [PR-39](https://github.com/OXID-eSales/wave-theme/pull/39)
 
 ### Changed
 - Use relative path to load font files [#0006954](https://bugs.oxid-esales.com/view.php?id=6954) [PR-30](https://github.com/OXID-eSales/wave-theme/pull/30)
@@ -44,6 +93,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.0.0 -  2019-01-21
 
-[1.1.1]: https://github.com/OXID-eSales/wave-theme/compare/v1.1.0...HEAD
+[1.3.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.3.0...HEAD
+[1.2.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/OXID-eSales/wave-theme/compare/v1.0.0...v1.0.1
