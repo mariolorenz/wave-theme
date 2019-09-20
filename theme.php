@@ -98,6 +98,12 @@ $aTheme = array(
             'value' => 1,
         ),
         array(
+            'group' => 'features',
+            'name'  => 'bl_showPriceAlarm',
+            'type'  => 'bool',
+            'value' => 1,
+        ),
+        array(
             'group' => 'background',
             'name'  => 'blBackgroundAttachment',
             'type'  => 'bool',
@@ -144,6 +150,12 @@ $aTheme = array(
             'name'  => 'blFullwidthLayout',
             'type'  => 'bool',
             'value' => 0,
+        ),
+        array(
+            'group' => 'display',
+            'name'  => 'blHomeLink',
+            'type'  => 'bool',
+            'value' => 1,
         ),
         array(
             'group' => 'googleanalytics',
