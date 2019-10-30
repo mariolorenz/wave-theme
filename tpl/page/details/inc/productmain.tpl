@@ -1,5 +1,3 @@
-[{oxscript include="js/pages/details.min.js" priority=10}]
-
 [{assign var="oConfig" value=$oViewConf->getConfig()}]
 [{assign var="oManufacturer" value=$oView->getManufacturer()}]
 [{assign var="aVariantSelections" value=$oView->getVariantSelections()}]
@@ -119,7 +117,7 @@
             [{/block}]
 
             [{* article main info block *}]
-            <div class="details-information[{if $oManufacturer->oxmanufacturers__oxicon->value}] hasBrand[{/if}]"" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <div class="details-information[{if $oManufacturer->oxmanufacturers__oxicon->value}] hasBrand[{/if}]" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
                     [{* additional info *}]
                     [{oxhasrights ident="SHOWARTICLEPRICE"}]
