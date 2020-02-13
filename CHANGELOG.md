@@ -4,14 +4,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [master] - Unreleased
+
+### Removed
+- Credit Card related blocks
+
 ## [2.0.0] - Unreleased
 
 ### Changed
 - Updated the version of bootstrap from 4.1.3 to 4.3.1 [PR-75](https://github.com/OXID-eSales/wave-theme/pull/75) 
 - BC Break: block in ``tpl/email/plain/ordershopped.tpl`` renamed from ``email_html_ordershipped_shipmenttrackingurl`` to ``email_plain_ordershipped_shipmenttrackingurl`` [PR-73](https://github.com/OXID-eSales/wave-theme/pull/73)
+- Decoded ``oxconfig`` insert queries in ``setup.sql``
 
 ### Fixed
 - Removed unwanted quotation mark in ``productmain.tpl`` html [PR-73](https://github.com/OXID-eSales/wave-theme/pull/73)
+
+### Removed
+- Google+ related settings together with frontend and email template blocks [PR-81](https://github.com/OXID-eSales/wave-theme/pull/81)
+
+## [1.4.0] - Unreleased
+
+### Added
+- New blocks:
+  - `form/newsletter.tpl`  
+    - newsletter_form_fields
+    - newsletter_form_button
+  - ``user_account_password`` in ``tpl/form/forgotpwd_change_pwd.tpl`` [PR-154](https://github.com/OXID-eSales/flow_theme/pull/154)
+  - ``user_account_password`` in ``tpl/form/user_password.tpl`` [PR-154](https://github.com/OXID-eSales/flow_theme/pull/154)
+
+## [1.3.1] - 2019-11-15
+
+### Added
+- Fixed syntax error in setup.sql [PR-80](https://github.com/OXID-eSales/wave-theme/pull/80) 
 
 ## [1.3.0] - 2019-10-15
 
@@ -116,7 +140,10 @@ in:
 
 ## 1.0.0 -  2019-01-21
 
-[2.0.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.3.0...HEAD
+[master]: https://github.com/OXID-eSales/wave-theme/compare/b-2.x...HEAD
+[2.0.0]: https://github.com/OXID-eSales/wave-theme/compare/b-1.x...b-2.x
+[1.4.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.3.1...b-1.x
+[1.3.1]: https://github.com/OXID-eSales/wave-theme/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/OXID-eSales/wave-theme/compare/v1.0.1...v1.1.0

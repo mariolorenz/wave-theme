@@ -27,7 +27,7 @@ $aTheme = array(
     'title'       => 'Wave',
     'description' => 'Wave is OXID`s official responsive theme based on the CSS framework Bootstrap 4.',
     'thumbnail'   => 'theme.jpg',
-    'version'     => '1.3.0',
+    'version'     => '1.3.1',
     'author'      => '<a href="http://www.oxid-esales.com" title="OXID eSales AG">OXID eSales AG</a>',
     'settings'    => array(
         array(
@@ -372,12 +372,6 @@ $aTheme = array(
             'name'  => 'sGoogleMapsAddr',
             'type'  => 'str',
             'value' => 'OXID eSales AG, Bertoldstraße 48, 79098 Freiburg',
-        ),
-        array(
-            'group' => 'footer',
-            'name'  => 'sGooglePlusUrl',
-            'type'  => 'str',
-            'value' => 'https://plus.google.com',
         ),
         array(
             'group' => 'googlets',
