@@ -1,5 +1,5 @@
 [{oxscript add="$('input,select,textarea').not('[type=submit]').jqBootstrapValidation();"}]
-<div class="card">
+<div class="card checkoutLogin">
     <form class="js-oxValidate" id="optionLogin" name="login" action="[{$oViewConf->getSslSelfLink()}]" method="post" role="form" novalidate="novalidate">
 
         <div class="card-header">
@@ -18,7 +18,7 @@
             [{assign var="aErrors" value=$oView->getFieldValidationErrors()}]
             <div class="form-group [{if $aErrors}]oxInValid[{/if}]">
                 <label for="lgn_usr">[{oxmultilang ident="EMAIL_ADDRESS"}]</label>
-                <input type="text" id="lgn_usr" name="lgn_usr" autocomplete="email" class="form-control textbox js-oxValidate js-oxValidate_notEmpty" placeholder="[{oxmultilang ident="EMAIL_ADDRESS"}]" required="required">
+                <input type="text" id="lgn_usr" name="lgn_usr" autocomplete="username" class="form-control textbox js-oxValidate js-oxValidate_notEmpty" placeholder="[{oxmultilang ident="EMAIL_ADDRESS"}]" required="required">
                 <div class="help-block"></div>
             </div>
             <div class="form-group [{if $aErrors}]oxInValid[{/if}]">

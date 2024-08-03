@@ -112,13 +112,13 @@ $aLang = [
     'DD_BASKET_BACK_TO_SHOP'                                => 'zurück zum Shop',
 
     // E-Mails
-    'DD_FOOTER_FOLLOW_US'                                    => 'Folgen Sie uns',
+    'DD_FOOTER_FOLLOW_US'                                   => 'Folgen Sie uns',
     'DD_FORGOT_PASSWORD_HEADING'                            => 'Passwort vergessen',
     'DD_INVITE_HEADING'                                     => 'Artikel-Empfehlung',
     'DD_INVITE_LINK'                                        => 'Link',
     'DD_NEWSLETTER_OPTIN_HEADING'                           => 'Ihre Newsletter-Anmeldung',
     'DD_ORDERSHIPPED_HEADING'                               => 'Versandbestätigung - Bestellung',
-    'DD_PRICEALARM_HEADING'                                 => 'Preisalarm',
+    'DD_PRICEALARM_HEADING'                                 => 'Wunschpreis',
     'DD_REGISTER_HEADING'                                   => 'Ihre Registrierung',
     'DD_DOWNLOADLINKS_HEADING'                              => 'Ihre Downloadlinks - Bestellung',
     'DD_WISHLIST_HEADING'                                   => 'Wunschzettel',

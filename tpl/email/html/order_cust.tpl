@@ -1,6 +1,5 @@
 [{assign var="shop"           value=$oEmailView->getShop()}]
 [{assign var="oViewConf"      value=$oEmailView->getViewConfig()}]
-[{assign var="oConf"          value=$oViewConf->getConfig()}]
 [{assign var="currency"       value=$oEmailView->getCurrency()}]
 [{assign var="user"           value=$oEmailView->getUser()}]
 [{assign var="oDelSet"        value=$order->getDelSet()}]
@@ -18,6 +17,7 @@
         border: 1px solid #d4d4d4;
         font-size: 13px;
         padding:5px;
+        white-space: nowrap;
     }
 
     table.orderarticles {
@@ -135,25 +135,33 @@
                     [{/if}]
                     <td>
                         <p>
-                            <b>[{$basketitem->getTitle()}]</b>
-                            [{if $basketitem->getChosenSelList()}]
-                                <ul>
-                                    [{foreach from=$basketitem->getChosenSelList() item=oList}]
-                                        <li style="padding: 3px;">[{$oList->name}] [{$oList->value}]</li>
-                                    [{/foreach}]
-                                </ul>
-                            [{/if}]
-                            [{if $basketitem->getPersParams()}]
-                                <ul>
-                                    [{foreach key=sVar from=$basketitem->getPersParams() item=aParam}]
-                                        <li style="padding: 3px;">[{$sVar}] : [{$aParam}]</li>
-                                    [{/foreach}]
-                                </ul>
-                            [{/if}]
+                            [{block name="email_html_order_cust_basketitem_title"}]
+                                <b>[{$basketitem->getTitle()}]</b>
+                            [{/block}]
+                            [{block name="email_html_order_cust_basketitem_sellist"}]
+                                [{if $basketitem->getChosenSelList()}]
+                                    <ul>
+                                        [{foreach from=$basketitem->getChosenSelList() item=oList}]
+                                            <li style="padding: 3px;">[{$oList->name}] [{$oList->value}]</li>
+                                        [{/foreach}]
+                                    </ul>
+                                [{/if}]
+                            [{/block}]
+                            [{block name="email_html_order_cust_basketitem_persparams"}]
+                                [{if $basketitem->getPersParams()}]
+                                    <ul>
+                                        [{foreach key=sVar from=$basketitem->getPersParams() item=aParam}]
+                                            <li style="padding: 3px;">[{$sVar}] : [{$aParam}]</li>
+                                        [{/foreach}]
+                                    </ul>
+                                [{/if}]
+                            [{/block}]
                             <br>
-                            <p>
-                                <b>[{oxmultilang ident="PRODUCT_NO" suffix="COLON"}] [{$basketproduct->oxarticles__oxartnum->value}]</b>
-                            </p>
+                            [{block name="email_html_order_cust_basketitem_artnum"}]
+                                <p>
+                                    <b>[{oxmultilang ident="PRODUCT_NO" suffix="COLON"}] [{$basketproduct->oxarticles__oxartnum->value}]</b>
+                                </p>
+                            [{/block}]
                             [{if $oViewConf->getShowGiftWrapping()}]
                                 [{assign var="oWrapping" value=$basketitem->getWrapping()}]
                                 <p>
@@ -168,43 +176,55 @@
 
                             [{if $blShowReviewLink}]
                                 <p>
-                                    <a href="[{$oConf->getShopURL()}]index.php?shp=[{$shop->oxshops__oxid->value}]&amp;anid=[{$basketitem->getProductId()}]&amp;cl=review&amp;reviewuserhash=[{$user->getReviewUserHash($user->getId())}]" style="" target="_blank">[{oxmultilang ident="PRODUCT_REVIEW"}]</a>
+                                    <a href="[{$shopUrl}]index.php?shp=[{$shop->oxshops__oxid->value}]&amp;anid=[{$basketitem->getProductId()}]&amp;cl=review&amp;reviewuserhash=[{$user->getReviewUserHash($user->getId())}]" style="" target="_blank">[{oxmultilang ident="PRODUCT_REVIEW"}]</a>
                                 </p>
                             [{/if}]
                         </p>
                     </td>
                     <td align="right">
-                        <p>
-                            <b>[{if $basketitem->getFUnitPrice()}][{$basketitem->getFUnitPrice()}] [{$currency->sign}][{/if}]</b>
-                            [{if !$basketitem->isBundle()}]
-                                [{assign var=dRegUnitPrice value=$basketitem->getRegularUnitPrice()}]
-                                [{assign var=dUnitPrice value=$basketitem->getUnitPrice()}]
-                                [{if $dRegUnitPrice->getPrice() > $dUnitPrice->getPrice()}]
-                                <br><s>[{$basketitem->getFRegularUnitPrice()}]&nbsp;[{$currency->sign}]</s>
-                                [{/if}]
-                            [{/if}]
-                        </p>
-
-                        [{if $basketitem->aDiscounts}]
+                        [{block name="email_html_order_cust_basketitem_unitprice"}]
                             <p>
-                                <em>[{oxmultilang ident="DISCOUNT"}]
-                                    [{foreach from=$basketitem->aDiscounts item=oDiscount}]
-                                      <br>[{$oDiscount->sDiscount}]
-                                    [{/foreach}]
-                                </em>
+                                <b>[{if $basketitem->getFUnitPrice()}][{$basketitem->getFUnitPrice()}] [{$currency->sign}][{/if}]</b>
+                                [{if !$basketitem->isBundle()}]
+                                    [{assign var=dRegUnitPrice value=$basketitem->getRegularUnitPrice()}]
+                                    [{assign var=dUnitPrice value=$basketitem->getUnitPrice()}]
+                                    [{if $dRegUnitPrice->getPrice() > $dUnitPrice->getPrice()}]
+                                    <br><s>[{$basketitem->getFRegularUnitPrice()}]&nbsp;[{$currency->sign}]</s>
+                                    [{/if}]
+                                [{/if}]
                             </p>
-                        [{/if}]
-
-                        [{if $basketproduct->oxarticles__oxorderinfo->value}]
-                            [{$basketproduct->oxarticles__oxorderinfo->value}]
-                        [{/if}]
+                        [{/block}]
+                        [{block name="email_html_order_cust_basketitem_discounts"}]
+                            [{if $basketitem->aDiscounts}]
+                                <p>
+                                    <em>[{oxmultilang ident="DISCOUNT"}]
+                                        [{foreach from=$basketitem->aDiscounts item=oDiscount}]
+                                          <br>[{$oDiscount->sDiscount}]
+                                        [{/foreach}]
+                                    </em>
+                                </p>
+                            [{/if}]
+                        [{/block}]
+                        [{block name="email_html_order_cust_basketitem_orderinfo"}]
+                            [{if $basketproduct->oxarticles__oxorderinfo->value}]
+                                [{$basketproduct->oxarticles__oxorderinfo->value}]
+                            [{/if}]
+                        [{/block}]
                     </td>
                     <td align="right">
-                        <b>[{$basketitem->getAmount()}]</b>
+                        [{block name="email_html_order_cust_basketitem_amount"}]
+                            <b>[{$basketitem->getAmount()}]</b>
+                        [{/block}]
                     </td>
-                    <td align="right">[{$basketitem->getVatPercent()}]%</td>
                     <td align="right">
-                        <b>[{$basketitem->getFTotalPrice()}] [{$currency->sign}]</b>
+                        [{block name="email_html_order_cust_basketitem_vat"}]
+                            [{$basketitem->getVatPercent()}]%
+                        [{/block}]
+                    </td>
+                    <td align="right">
+                        [{block name="email_html_order_cust_basketitem_price"}]
+                            <b>[{$basketitem->getFTotalPrice()}] [{$currency->sign}]</b>
+                        [{/block}]
                     </td>
                 </tr>
             [{/block}]

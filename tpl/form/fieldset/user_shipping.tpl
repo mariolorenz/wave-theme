@@ -2,11 +2,6 @@
     [{assign var="delivadr" value=$oxcmp_user->getSelectedAddress()}]
 [{/if}]
 
-[{if !$deladr}]
-    [{assign var="oConfig" value=$oView->getConfig()}]
-    [{assign var="deladr"  value=$oConfig->getRequestParameter('deladr')}]
-[{/if}]
-
 [{if $oxcmp_user}]
     [{assign var="aUserAddresses" value=$oxcmp_user->getUserAddresses()}]
 
@@ -86,7 +81,7 @@
 <div id="shippingAddressForm" [{if $delivadr}]style="display: none;"[{/if}]>
     <div class="form-group">
         <label class="control-label col-lg-3[{if $oView->isFieldRequired(oxaddress__oxsal)}] req[{/if}]" for="deladr_oxaddress__oxsal">[{oxmultilang ident="TITLE"}]</label>
-        <div class="col-lg-2">
+        <div class="col-lg-9">
             [{include file="form/fieldset/salutation.tpl" name="deladr[oxaddress__oxsal]" value=$delivadr->oxaddress__oxsal->value value2=$deladr.oxaddress__oxsal class="form-control" id="deladr_oxaddress__oxsal"}]
             <div class="help-block"></div>
         </div>
@@ -94,7 +89,7 @@
     <div class="form-group[{if $aErrors.oxaddress__oxfname}] oxInValid[{/if}]">
         <label class="control-label col-lg-3[{if $oView->isFieldRequired(oxaddress__oxfname)}] req[{/if}]" for="deladr_oxaddress__oxfname">[{oxmultilang ident="FIRST_NAME"}]</label>
         <div class="col-lg-9">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxfname)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" maxlength="255"  name="deladr[oxaddress__oxfname]" id="deladr_oxaddress__oxfname" value="[{if isset( $deladr.oxaddress__oxfname )}][{$deladr.oxaddress__oxfname}][{else}][{$delivadr->oxaddress__oxfname->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxfname)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxfname)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" maxlength="255"  name="deladr[oxaddress__oxfname]" id="deladr_oxaddress__oxfname" autocomplete="shipping given-name" value="[{if isset( $deladr.oxaddress__oxfname )}][{$deladr.oxaddress__oxfname}][{else}][{$delivadr->oxaddress__oxfname->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxfname)}] required=""[{/if}]>
             [{if $oView->isFieldRequired(oxaddress__oxfname)}]
                 [{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxfname}]
                 <div class="help-block"></div>
@@ -104,7 +99,7 @@
     <div class="form-group[{if $aErrors.oxaddress__oxlname}] oxInValid[{/if}]">
         <label class="control-label col-lg-3[{if $oView->isFieldRequired(oxaddress__oxlname)}] req[{/if}]" for="deladr_oxaddress__oxlname">[{oxmultilang ident="LAST_NAME"}]</label>
         <div class="col-lg-9">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxlname)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" maxlength="255" name="deladr[oxaddress__oxlname]" id="deladr_oxaddress__oxlname" value="[{if isset( $deladr.oxaddress__oxlname )}][{$deladr.oxaddress__oxlname}][{else}][{$delivadr->oxaddress__oxlname->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxlname)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxlname)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" maxlength="255" name="deladr[oxaddress__oxlname]" id="deladr_oxaddress__oxlname" autocomplete="shipping family-name" value="[{if isset( $deladr.oxaddress__oxlname )}][{$deladr.oxaddress__oxlname}][{else}][{$delivadr->oxaddress__oxlname->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxlname)}] required=""[{/if}]>
             [{if $oView->isFieldRequired(oxaddress__oxlname)}]
                 [{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxlname}]
                 <div class="help-block"></div>
@@ -114,7 +109,7 @@
     <div class="form-group[{if $aErrors.oxaddress__oxcompany}] oxInValid[{/if}]">
         <label class="control-label col-lg-3[{if $oView->isFieldRequired(oxaddress__oxcompany)}] req[{/if}]" for="deladr_oxaddress__oxcompany">[{oxmultilang ident="COMPANY"}]</label>
         <div class="col-lg-9">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxcompany)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" size="37" maxlength="255" name="deladr[oxaddress__oxcompany]" id="deladr_oxaddress__oxcompany" value="[{if isset( $deladr.oxaddress__oxcompany )}][{$deladr.oxaddress__oxcompany}][{else}][{$delivadr->oxaddress__oxcompany->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxcompany)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxcompany)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" size="37" maxlength="255" name="deladr[oxaddress__oxcompany]" id="deladr_oxaddress__oxcompany" autocomplete="shipping organization" value="[{if isset( $deladr.oxaddress__oxcompany )}][{$deladr.oxaddress__oxcompany}][{else}][{$delivadr->oxaddress__oxcompany->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxcompany)}] required=""[{/if}]>
             [{if $oView->isFieldRequired(oxaddress__oxcompany)}]
                 [{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxcompany}]
             [{/if}]
@@ -135,7 +130,7 @@
     <div class="form-group[{if $aErrors.oxaddress__oxstreet}] oxInValid[{/if}]">
         <label class="control-label col-12 col-lg-3[{if $oView->isFieldRequired(oxaddress__oxstreet) || $oView->isFieldRequired(oxaddress__oxstreetnr)}] req[{/if}]" for="deladr_oxaddress__oxstreet">[{oxmultilang ident="STREET_AND_STREETNO"}]</label>
         <div class="col-8 col-lg-6">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxstreet)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="pair-xsmall" maxlength="255" name="deladr[oxaddress__oxstreet]" id="deladr_oxaddress__oxstreet" value="[{if isset( $deladr.oxaddress__oxstreet )}][{$deladr.oxaddress__oxstreet}][{else}][{$delivadr->oxaddress__oxstreet->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxstreet)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxstreet)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="pair-xsmall" maxlength="255" name="deladr[oxaddress__oxstreet]" autocomplete="shipping street-address" id="deladr_oxaddress__oxstreet" value="[{if isset( $deladr.oxaddress__oxstreet )}][{$deladr.oxaddress__oxstreet}][{else}][{$delivadr->oxaddress__oxstreet->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxstreet)}] required=""[{/if}]>
         </div>
         <div class="col-4 col-lg-3">
             <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxstreetnr)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="xsmall" maxlength="16" name="deladr[oxaddress__oxstreetnr]" id="deladr_oxaddress__oxstreetnr" value="[{if isset( $deladr.oxaddress__oxstreetnr )}][{$deladr.oxaddress__oxstreetnr}][{else}][{$delivadr->oxaddress__oxstreetnr->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxstreetnr)}] required=""[{/if}]>
@@ -150,10 +145,10 @@
     <div class="form-group[{if $aErrors.oxaddress__oxzip || $aErrors.oxaddress__oxcity}] oxInValid[{/if}]">
         <label class="control-label col-12 col-lg-3[{if $oView->isFieldRequired(oxaddress__oxzip) || $oView->isFieldRequired(oxaddress__oxcity)}] req[{/if}]" for="deladr_oxaddress__oxzip">[{oxmultilang ident="POSTAL_CODE_AND_CITY"}]</label>
         <div class="col-5 col-lg-3">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxzip)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="small" maxlength="50" name="deladr[oxaddress__oxzip]" id="deladr_oxaddress__oxzip" value="[{if isset( $deladr.oxaddress__oxzip )}][{$deladr.oxaddress__oxzip}][{else}][{$delivadr->oxaddress__oxzip->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxzip)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxzip)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="small" maxlength="50" name="deladr[oxaddress__oxzip]" id="deladr_oxaddress__oxzip" autocomplete="shipping postal-code" value="[{if isset( $deladr.oxaddress__oxzip )}][{$deladr.oxaddress__oxzip}][{else}][{$delivadr->oxaddress__oxzip->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxzip)}] required=""[{/if}]>
         </div>
         <div class="col-7 col-lg-6">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxcity)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="pair-small" maxlength="255" name="deladr[oxaddress__oxcity]" id="deladr_oxaddress__oxcity" value="[{if isset( $deladr.oxaddress__oxcity )}][{$deladr.oxaddress__oxcity}][{else}][{$delivadr->oxaddress__oxcity->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxcity)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxcity)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" data-fieldsize="pair-small" maxlength="255" name="deladr[oxaddress__oxcity]" id="deladr_oxaddress__oxcity" autocomplete="shipping locality" value="[{if isset( $deladr.oxaddress__oxcity )}][{$deladr.oxaddress__oxcity}][{else}][{$delivadr->oxaddress__oxcity->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxcity)}] required=""[{/if}]>
         </div>
         <div class="col-12 col-md-9 ml-md-auto">
             [{if $oView->isFieldRequired(oxaddress__oxzip) || $oView->isFieldRequired(oxaddress__oxcity)}]
@@ -167,7 +162,7 @@
         <div class="form-group[{if $aErrors.oxaddress__oxcountryid}] oxInValid[{/if}]">
             <label class="control-label col-lg-3[{if $oView->isFieldRequired(oxaddress__oxcountryid)}] req[{/if}]" for="delCountrySelect">[{oxmultilang ident="COUNTRY"}]</label>
             <div class="col-lg-9">
-                <select class="form-control[{if $oView->isFieldRequired(oxaddress__oxcountryid)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" id="delCountrySelect" name="deladr[oxaddress__oxcountryid]"[{if $oView->isFieldRequired(oxaddress__oxcountryid)}] required=""[{/if}]>
+                <select class="form-control[{if $oView->isFieldRequired(oxaddress__oxcountryid)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" id="delCountrySelect" name="deladr[oxaddress__oxcountryid]"[{if $oView->isFieldRequired(oxaddress__oxcountryid)}] required=""[{/if}] autocomplete="shipping country">
                     <option value="">-</option>
                     [{assign var="blCountrySelected" value=false}]
                     [{foreach from=$oViewConf->getCountryList() item=country key=country_id}]
@@ -206,7 +201,7 @@
     <div class="form-group[{if $aErrors.oxaddress__oxfon}] oxInValid[{/if}]">
         <label class="control-label col-lg-3[{if $oView->isFieldRequired(oxaddress__oxfon)}] req[{/if}]" for="deladr_oxaddress__oxfon">[{oxmultilang ident="PHONE"}]</label>
         <div class="col-lg-9">
-            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxfon)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" size="37" maxlength="128" name="deladr[oxaddress__oxfon]" id="deladr_oxaddress__oxfon" value="[{if isset( $deladr.oxaddress__oxfon )}][{$deladr.oxaddress__oxfon}][{else}][{$delivadr->oxaddress__oxfon->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxfon)}] required=""[{/if}]>
+            <input class="form-control[{if $oView->isFieldRequired(oxaddress__oxfon)}] js-oxValidate js-oxValidate_notEmpty[{/if}]" type="text" size="37" maxlength="128" name="deladr[oxaddress__oxfon]" id="deladr_oxaddress__oxfon" autocomplete="shipping tel" value="[{if isset( $deladr.oxaddress__oxfon )}][{$deladr.oxaddress__oxfon}][{else}][{$delivadr->oxaddress__oxfon->value}][{/if}]"[{if $oView->isFieldRequired(oxaddress__oxfon)}] required=""[{/if}]>
             [{if $oView->isFieldRequired(oxaddress__oxfon)}]
                 [{include file="message/inputvalidation.tpl" aErrors=$aErrors.oxaddress__oxfon}]
             [{/if}]

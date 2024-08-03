@@ -7,8 +7,7 @@
 ## Branch Compatibility
 
 * master branch is compatible with OXID eShop compilation master
-* b-2.x branch is compatible with OXID eShop unreleased b-6.x
-* b-1.x branch is compatible with OXID eShop compilation 6.1 and 6.2
+* b-1.x branch is compatible with OXID eShop compilation 6.1, 6.2 and 6.3
 
 ## Installation
 If you want to extend the theme you need to clone the repository (see section development) as some soures are ignored on composer installation. 
@@ -21,19 +20,7 @@ This step is only required if the theme is not delivered with the OXID distribut
 composer require oxid-esales/wave-theme
 ```
 
-### Step 2: Prepare the database 
-
-In order to install the theme options, import the ``setup.sql`` (to be found in ``DOCUMENT_ROOT/source/Application/views/wave``) into your database.
-
-#### Option 1: Console
-
-``mysql -u MYSQL_USER -p SHOP_DATABASE < wave/setup.sql``
-
-#### Option 2: Shop Admin: Service -> Tools
-
-If you have a local copy of wave files, go to Service -> Tools in Shop Admin, upload wave/setup.sql and click "start update" button
-
-### Step 3: Activate theme 
+### Step 2: Activate theme 
 
 Log into the admin panel, go to *Extensions → Themes → Wave* and press the *Activate* button. Clean the cache and off you go!
 
@@ -51,28 +38,22 @@ instructions (https://nodejs.org/en/download/package-manager/). Example of
 Installation on ubuntu system:
 
 	```
-	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 	sudo apt-get install -y nodejs
 	```
 
-2. Install ``grunt`` globally. Example:
-
-	```
-    sudo npm install -g grunt-cli
-    ```
-
-3. Go to "wave" theme's directory and install all related ``grunt`` plugins:
+2. Go to "wave" theme's directory and install all related ``grunt`` plugins:
 
 	```
     cd DOCUMENT_ROOT/Application/views/wave/
     npm install
     ```
 
-4. Now its possible to regenerate "wave" theme assets by running ``grunt`` default
+3. Now its possible to regenerate "wave" theme assets by running ``grunt`` default
 task while being in "wave" directory:
 
 	```
-	grunt
+	npm start
 	```
 
 ## Contributing

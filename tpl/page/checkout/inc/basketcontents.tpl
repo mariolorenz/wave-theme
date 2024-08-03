@@ -11,7 +11,9 @@
     <input type="hidden" name="CustomError" value="basket">
 
     <div class="basket" id="basketcontents_list">
-        [{include file="page/checkout/inc/basketcontents_list.tpl"}]
+        [{block name="checkout_basketcontents_list"}]
+            [{include file="page/checkout/inc/basketcontents_list.tpl"}]
+        [{/block}]
     </div>
 
 </form>
@@ -170,9 +172,9 @@
                         [{if $deliveryCost->getVatValue()}]
                         <tr>
                             [{if $oxcmp_basket->isProportionalCalculationOn() }]
-                                <th>[{oxmultilang ident="BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" suffix="COLON"}]</th>
+                                <th class="text-right">[{oxmultilang ident="BASKET_TOTAL_PLUS_PROPORTIONAL_VAT" suffix="COLON"}]</th>
                             [{else}]
-                                <th>[{oxmultilang ident="VAT_PLUS_PERCENT_AMOUNT" suffix="COLON" args=$deliveryCost->getVat()}]</th>
+                                <th class="text-right">[{oxmultilang ident="VAT_PLUS_PERCENT_AMOUNT" suffix="COLON" args=$deliveryCost->getVat()}]</th>
                             [{/if}]
                             <td id="basketDeliveryVat" class="text-right">[{oxprice price=$deliveryCost->getVatValue() currency=$currency}]</td>
                         </tr>

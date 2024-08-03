@@ -1,6 +1,5 @@
 [{assign var="shop"      value=$oEmailView->getShop()}]
 [{assign var="oViewConf" value=$oEmailView->getViewConfig()}]
-[{assign var="oConf"     value=$oViewConf->getConfig()}]
 [{assign var="currency"  value=$oEmailView->getCurrency()}]
 [{assign var="user"      value=$oEmailView->getUser()}]
 [{assign var="basket"    value=$order->getBasket()}]
@@ -16,6 +15,7 @@
         border: 1px solid #d4d4d4;
         font-size: 13px;
         padding:5px;
+        white-space: nowrap;
     }
 
     table.orderarticles {
